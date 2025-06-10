@@ -1,0 +1,17 @@
+# Dependencies for Password Lullaby Bot
+flask
+tensorflow
+librosa
+numpy
+sounddevice
+soundfile
+pyyaml
+# Add other necessary libraries here
+
+# For neural singing synthesis (actual library may vary)
+diffsinger
+
+# For audio file handling and manipulation
+soundfile  # For reading/writing audio files (already listed, but good to group)
+pydub      # For audio manipulation (optional, for effects etc.)
+# wave and struct are part of Python standard library for dummy WAV
