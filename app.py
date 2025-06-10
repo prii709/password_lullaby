@@ -1,11 +1,12 @@
 # Password Lullaby Bot - Main Application
+from getpass import getpass
 from audio_utils.char_mapper import password_to_notes
 from model.singing_synthesis import load_diffsinger_model, generate_melody_from_notes
 from audio_utils.synthesis import synthesize_melody_to_audio
 
 def get_password_input():
-    '''Prompts the user for a password and returns it.'''
-    password = input("Enter your password: ")
+    '''Prompts the user for a password and returns it securely.'''
+    password = getpass("Enter your password: ")
     # PRIVACY NOTE: The password string obtained here is processed immediately
     # by char_mapper.password_to_notes and is not stored or logged.
     return password
@@ -27,15 +28,10 @@ def main():
     melody = generate_melody_from_notes(notes)
 
     if melody:
-        print(f"Successfully generated melody (simulated): {melody}")
-        audio_file = synthesize_melody_to_audio(melody)
-        if audio_file:
-            print(f"Lullaby audio (simulated) saved to: {audio_file}")
-            print("You would normally play this file with an audio player.")
-        else:
-            print("Failed to synthesize audio.")
+        audio_path = synthesize_melody_to_audio(melody, output_filename="lullaby.wav")
+        print(f"Lullaby saved at: {audio_path}")
     else:
-        print("Failed to generate melody.")
+        print("Melody generation failed. Exiting.")
 
 if __name__ == "__main__":
     main()
