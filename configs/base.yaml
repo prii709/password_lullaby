@@ -1,0 +1,37 @@
+# === MODEL HYPERPARAMETERS (For FastSpeech2) ===
+hidden_size: 256
+enc_layers: 4
+dec_layers: 4
+enc_ffn_kernel_size: 3
+dec_ffn_kernel_size: 3
+num_heads: 2
+dropout: 0.1
+ffn_act: gelu
+ffn_padding: 1
+
+encoder_type: fft
+decoder_type: fft
+use_pos_embed: true
+use_final_proj: true
+
+audio_num_mel_bins: 80
+
+# Duration Predictor
+predictor_hidden: 256
+dur_predictor_layers: 2
+dur_predictor_kernel: 3
+predictor_dropout: 0.2
+dur_loss: mse
+
+# Pitch & UV
+use_pitch_embed: false
+pitch_type: frame
+use_uv: false
+
+# Speaker
+use_spk_id: false
+use_spk_embed: false
+use_split_spk_id: false
+num_spk: 0
+use_energy_embed: false
+predictor_grad: 0.0
